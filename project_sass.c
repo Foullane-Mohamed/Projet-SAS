@@ -84,9 +84,9 @@ void ajouter()
 
     do
     {
-        printf("Siser departement de ltudiant [economie ou math ou physique] : ");
+        printf("Siser departement de letudiant economie ou math ou physique] : ");
         scanf("%s", etudiant[count].departement);
-        if (strcmp(departement, "economie") == 0 || strcmp(departement, "math") == 0 || strcmp(departement, "physique") == 0)
+        if (strcmp(etudiant[count].departement, "economie") == 0 || strcmp(etudiant[count].departement, "math") == 0 || strcmp(etudiant[count].departement, "physique") == 0)
         {
 
             valid = 1;
@@ -349,7 +349,17 @@ void etudiants_3_meilleures()
 }
 
 void etudiants_reussi(){
+    int numbre_reusite;
+      for (int i = 0; i < count; i++)
+    {
+        if (etudiant[i].note_generale>=10)
+        {
+            numbre_reusite++;
 
+        }
+
+    }
+    printf(" le nombre detudiants ayant reussi est : %d",numbre_reusite);
 }
 
 
