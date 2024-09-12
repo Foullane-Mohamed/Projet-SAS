@@ -22,7 +22,7 @@ void afficher();
 // void afficher_note_generale();
 // void afficher_details_personnels();
 // void afficher_nemero_unique();
-void print_liste_donner();
+void print_liste_donner(int x);
 void moyenne_generale();
 void moyenne_generale_departement();
 void moyenne_generale_de_luniversit();
@@ -35,6 +35,7 @@ void recherche_nom();
 void liste_economie();
 void liste_math();
 void liste_physique();
+void liste_departement();
 
 int main()
 {
@@ -46,7 +47,7 @@ int main()
     printf("2 : Modifier ou supprimer un etudiant \n");
     printf("3 : Afficher les details d'un etudiant \n");
     printf("4 : Calculer la moyenne generale \n");
-    printf("5 : Statistiques ");
+    printf("5 : Statistiques \n");
     printf("6 : Rechercher un etudiant\n ");
     printf("7 : Trier  etudiant\n ");
     printf("8 : Quitter\n");
@@ -90,23 +91,23 @@ void ajouter()
   scanf("%s", etudiant[count].prenom);
   printf("Siser date de naissance de ltudiant : ");
   scanf("%s", etudiant[count].date_de_naissance);
-  int valid = 0;
+  int valid_ = 0;
 
   do
   {
-    printf("Siser departement de letudiant economie ou math ou physique] : ");
+    printf("Siser departement de letudiant [economie ou math ou physique] : ");
     scanf("%s", etudiant[count].departement);
     if (strcmp(etudiant[count].departement, "economie") == 0 || strcmp(etudiant[count].departement, "math") == 0 || strcmp(etudiant[count].departement, "physique") == 0)
     {
 
-      valid = 1;
+      valid_ = 1;
     }
     else
     {
       printf("Le departement doit etre [economie ou math ou physique] \n");
     }
 
-  } while (valid != 1);
+  } while (valid_ != 1);
 
   printf("Siser note generale de ltudiant : ");
   scanf("%f", &etudiant[count].note_generale);
@@ -185,7 +186,7 @@ void modifier()
 void supprimer()
 {
   int numero_unique_siser_2;
-  printf("Entrez le numéro unique de l'étudiant a modifier : ");
+  printf("Entrez le numero unique de letudiant a modifier : ");
   scanf("%d", &numero_unique_siser_2);
   for (int i = 0; i < count; i++)
   {
@@ -208,7 +209,7 @@ void afficher()
   for (int i = 0; i < count; i++)
   {
 
-print_liste_donner();
+    print_liste_donner(i);
   }
 }
 
@@ -389,9 +390,9 @@ void Rechercher_etudiant()
 }
 void recherche_nom()
 {
-  int nom_saiser;
+  char nom_saiser[100];
   printf("Entrez le nom de l'étudiant a afficher : ");
-  scanf("%d", &nom_saiser);
+  scanf("%s", &nom_saiser);
   for (int i = 0; i < count; i++)
   {
     if (strcmp(etudiant[i].nom, nom_saiser))
@@ -449,46 +450,44 @@ void liste_economie()
   {
     if (strcmp(etudiant[i].departement, "economie"))
     {
-      print_liste_donner;
+      print_liste_donner(i);
     }
   }
 }
 void liste_math()
 {
-    for (int i = 0; i < count; i++)
+  for (int i = 0; i < count; i++)
   {
     if (strcmp(etudiant[i].departement, "math"))
     {
-      print_liste_donner;
+      print_liste_donner(i);
     }
   }
 }
 void liste_physique()
 {
-      for (int i = 0; i < count; i++)
+  for (int i = 0; i < count; i++)
   {
     if (strcmp(etudiant[i].departement, "physique"))
     {
-      print_liste_donner;
+      print_liste_donner(i);
     }
   }
 }
-void print_liste_donner(){
-      printf("numero unique de ltudiant est : %d", etudiant[i].numero_unique);
+void print_liste_donner(int x_count)
+{
+  printf("numero unique de ltudiant est : %d", etudiant[x_count].numero_unique);
 
-    printf("nom de letudiant est : %s", etudiant[i].nom);
+  printf("nom de letudiant est : %s", etudiant[x_count].nom);
 
-    printf("prenom de letudiant est : %s", etudiant[i].prenom);
+  printf("prenom de letudiant est : %s", etudiant[x_count].prenom);
 
-    printf("date de naissance de ltudiant est : %s", etudiant[i].date_de_naissance);
+  printf("date de naissance de ltudiant est : %s", etudiant[x_count].date_de_naissance);
 
-    printf("departement de ltudiant est : %s", etudiant[i].departement);
-    printf("Siser  ");
-    printf("note generale de ltudiant est : %f", &etudiant[i].note_generale);
+  printf("departement de ltudiant est : %s", etudiant[x_count].departement);
+  printf("Siser  ");
+  printf("note generale de ltudiant est : %f", &etudiant[x_count].note_generale);
 }
-
-
-
 
 // void afficher_details_personnels()
 // {
