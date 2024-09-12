@@ -91,7 +91,7 @@ void ajouter()
   scanf("%s", etudiant[count].prenom);
   printf("Siser date de naissance de ltudiant : ");
   scanf("%s", etudiant[count].date_de_naissance);
-  int valid_ = 0;
+  int valid = 0;
 
   do
   {
@@ -100,14 +100,14 @@ void ajouter()
     if (strcmp(etudiant[count].departement, "economie") == 0 || strcmp(etudiant[count].departement, "math") == 0 || strcmp(etudiant[count].departement, "physique") == 0)
     {
 
-      valid_ = 1;
+      valid = 1;
     }
     else
     {
       printf("Le departement doit etre [economie ou math ou physique] \n");
     }
 
-  } while (valid_ != 1);
+  } while (valid != 1);
 
   printf("Siser note generale de ltudiant : ");
   scanf("%f", &etudiant[count].note_generale);
@@ -162,17 +162,23 @@ void modifier()
       printf("Siser date de naissance de ltudiant : ");
       scanf("%s", etudiant[count].date_de_naissance);
 
-      do
-      {
+      int valid_2 = 0;
 
-        if (strcmp(departement_2, "economie") || strcmp(departement_2, "math") || strcmp(departement_2, "physique"))
-        {
-          printf("Siser departement de ltudiant [economie ou math ou physique] : ");
-          scanf("%s", etudiant[count].departement);
-        }
+  do
+  {
+    printf("Siser departement de letudiant [economie ou math ou physique] : ");
+    scanf("%s", etudiant[count].departement);
+    if (strcmp(etudiant[count].departement, "economie") == 0 || strcmp(etudiant[count].departement, "math") == 0 || strcmp(etudiant[count].departement, "physique") == 0)
+    {
 
-      } while (strcmp(departement_2, "economie") || strcmp(departement_2, "math") || strcmp(departement_2, "physique"));
+      valid_2 = 1;
+    }
+    else
+    {
+      printf("Le departement doit etre [economie ou math ou physique] \n");
+    }
 
+  } while (valid_2 != 1);
       printf("Siser note generale de ltudiant : ");
       scanf("%f", &etudiant[count].note_generale);
 
